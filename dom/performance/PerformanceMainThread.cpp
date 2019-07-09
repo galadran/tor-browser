@@ -289,7 +289,7 @@ void PerformanceMainThread::EnsureDocEntry() {
 void PerformanceMainThread::GetEntries(
     nsTArray<RefPtr<PerformanceEntry>>& aRetval) {
   // We return an empty list when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     aRetval.Clear();
     return;
   }
@@ -308,7 +308,7 @@ void PerformanceMainThread::GetEntries(
 void PerformanceMainThread::GetEntriesByType(
     const nsAString& aEntryType, nsTArray<RefPtr<PerformanceEntry>>& aRetval) {
   // We return an empty list when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     aRetval.Clear();
     return;
   }
@@ -329,7 +329,7 @@ void PerformanceMainThread::GetEntriesByName(
     const nsAString& aName, const Optional<nsAString>& aEntryType,
     nsTArray<RefPtr<PerformanceEntry>>& aRetval) {
   // We return an empty list when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     aRetval.Clear();
     return;
   }

@@ -113,7 +113,7 @@ PerformanceTimingData::PerformanceTimingData(nsITimedChannel* aChannel,
   mZeroTime = aZeroTime;
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     mZeroTime = 0;
   }
 
@@ -233,7 +233,7 @@ DOMHighResTimeStamp PerformanceTimingData::FetchStartHighRes(
 
   if (!mFetchStart) {
     if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return mZeroTime;
     }
     MOZ_ASSERT(!mAsyncOpen.IsNull(),
@@ -289,7 +289,7 @@ bool PerformanceTimingData::CheckAllowedOrigin(nsIHttpChannel* aResourceChannel,
 
 uint8_t PerformanceTimingData::GetRedirectCount() const {
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return 0;
   }
   if (!mAllRedirectsSameOrigin) {
@@ -300,7 +300,7 @@ uint8_t PerformanceTimingData::GetRedirectCount() const {
 
 bool PerformanceTimingData::ShouldReportCrossOriginRedirect() const {
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return false;
   }
 
@@ -315,7 +315,7 @@ DOMHighResTimeStamp PerformanceTimingData::AsyncOpenHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting() || mAsyncOpen.IsNull()) {
+      false || mAsyncOpen.IsNull()) {
     return mZeroTime;
   }
   DOMHighResTimeStamp rawValue =
@@ -332,7 +332,7 @@ DOMHighResTimeStamp PerformanceTimingData::WorkerStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting() || mWorkerStart.IsNull()) {
+      false || mWorkerStart.IsNull()) {
     return mZeroTime;
   }
   DOMHighResTimeStamp rawValue =
@@ -359,7 +359,7 @@ DOMHighResTimeStamp PerformanceTimingData::RedirectStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   return TimeStampToReducedDOMHighResOrFetchStart(aPerformance, mRedirectStart);
@@ -394,7 +394,7 @@ DOMHighResTimeStamp PerformanceTimingData::RedirectEndHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   return TimeStampToReducedDOMHighResOrFetchStart(aPerformance, mRedirectEnd);
@@ -418,7 +418,7 @@ DOMHighResTimeStamp PerformanceTimingData::DomainLookupStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   return TimeStampToReducedDOMHighResOrFetchStart(aPerformance,
@@ -435,7 +435,7 @@ DOMHighResTimeStamp PerformanceTimingData::DomainLookupEndHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   // Bug 1155008 - nsHttpTransaction is racy. Return DomainLookupStart when null
@@ -461,7 +461,7 @@ DOMHighResTimeStamp PerformanceTimingData::ConnectStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   if (mConnectStart.IsNull()) {
@@ -485,7 +485,7 @@ DOMHighResTimeStamp PerformanceTimingData::SecureConnectionStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   if (!mSecureConnection) {
@@ -514,7 +514,7 @@ DOMHighResTimeStamp PerformanceTimingData::ConnectEndHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   // Bug 1155008 - nsHttpTransaction is racy. Return ConnectStart when null
@@ -539,7 +539,7 @@ DOMHighResTimeStamp PerformanceTimingData::RequestStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
 
@@ -559,7 +559,7 @@ DOMHighResTimeStamp PerformanceTimingData::ResponseStartHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   if (mResponseStart.IsNull() ||
@@ -583,7 +583,7 @@ DOMHighResTimeStamp PerformanceTimingData::ResponseEndHighRes(
   MOZ_ASSERT(aPerformance);
 
   if (!nsContentUtils::IsPerformanceTimingEnabled() || !IsInitialized() ||
-      nsContentUtils::ShouldResistFingerprinting()) {
+      false) {
     return mZeroTime;
   }
   if (mResponseEnd.IsNull() ||

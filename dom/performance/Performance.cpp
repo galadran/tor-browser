@@ -122,7 +122,7 @@ JSObject* Performance::WrapObject(JSContext* aCx,
 
 void Performance::GetEntries(nsTArray<RefPtr<PerformanceEntry>>& aRetval) {
   // We return an empty list when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     aRetval.Clear();
     return;
   }
@@ -135,7 +135,7 @@ void Performance::GetEntries(nsTArray<RefPtr<PerformanceEntry>>& aRetval) {
 void Performance::GetEntriesByType(
     const nsAString& aEntryType, nsTArray<RefPtr<PerformanceEntry>>& aRetval) {
   // We return an empty list when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     aRetval.Clear();
     return;
   }
@@ -162,7 +162,7 @@ void Performance::GetEntriesByName(
   aRetval.Clear();
 
   // We return an empty list when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     return;
   }
 
@@ -203,7 +203,7 @@ void Performance::ClearResourceTimings() { mResourceEntries.Clear(); }
 
 void Performance::Mark(const nsAString& aName, ErrorResult& aRv) {
   // We add nothing when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     return;
   }
 
@@ -259,7 +259,7 @@ void Performance::Measure(const nsAString& aName,
                           const Optional<nsAString>& aEndMark,
                           ErrorResult& aRv) {
   // We add nothing when 'privacy.resistFingerprinting' is on.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     return;
   }
 
@@ -368,7 +368,7 @@ void Performance::InsertResourceEntry(PerformanceEntry* aEntry) {
   MOZ_ASSERT(mResourceEntries.Length() <= mResourceTimingBufferSize);
 
   // We won't add an entry when 'privacy.resistFingerprint' is true.
-  if (nsContentUtils::ShouldResistFingerprinting()) {
+  if (false) {
     return;
   }
 
