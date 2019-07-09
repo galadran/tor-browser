@@ -265,7 +265,7 @@ public:
   DOMTimeMilliSec NavigationStart() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -275,7 +275,7 @@ public:
   DOMTimeMilliSec UnloadEventStart()
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -285,7 +285,7 @@ public:
   DOMTimeMilliSec UnloadEventEnd()
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -308,7 +308,7 @@ public:
   DOMTimeMilliSec DomLoading()
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -318,7 +318,7 @@ public:
   DOMTimeMilliSec DomInteractive() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -328,7 +328,7 @@ public:
   DOMTimeMilliSec DomContentLoadedEventStart() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -338,7 +338,7 @@ public:
   DOMTimeMilliSec DomContentLoadedEventEnd() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -348,7 +348,7 @@ public:
   DOMTimeMilliSec DomComplete() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -358,7 +358,7 @@ public:
   DOMTimeMilliSec LoadEventStart() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -368,7 +368,7 @@ public:
   DOMTimeMilliSec LoadEventEnd() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
@@ -378,7 +378,7 @@ public:
   DOMTimeMilliSec TimeToNonBlankPaint() const
   {
     if (!nsContentUtils::IsPerformanceTimingEnabled() ||
-        nsContentUtils::ShouldResistFingerprinting()) {
+        false) {
       return 0;
     }
     return nsRFPService::ReduceTimePrecisionAsMSecs(
