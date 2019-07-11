@@ -128,7 +128,7 @@ pref("general.buildID.override", "20100101");
 pref("browser.startup.homepage_override.buildID", "20100101");
 pref("general.useragent.vendor", "");
 pref("general.useragent.vendorSub", "");
-pref("dom.enable_performance", false);
+pref("dom.enable_performance", true);
 pref("browser.zoom.siteSpecific", false);
 pref("intl.charset.default", "windows-1252");
 pref("browser.link.open_newwindow.restriction", 0); // Bug 9881: Open popups in new tabs (to avoid fullscreen popups)
