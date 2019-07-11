@@ -139,8 +139,8 @@ pref("media.video_stats.enabled", false);
 pref("media.benchmark.vp9.threshold", 0);
 // Disable device sensors as possible fingerprinting vector (bug 15758)
 pref("device.sensors.enabled", false);
-pref("dom.enable_resource_timing", false); // Bug 13024: To hell with this API
-pref("dom.enable_user_timing", false); // Bug 16336: To hell with this API
+pref("dom.enable_resource_timing", true); // Bug 13024: To hell with this API
+pref("dom.enable_user_timing", true); // Bug 16336: To hell with this API
 pref("privacy.resistFingerprinting", true);
 pref("privacy.resistFingerprinting.block_mozAddonManager", true); // Bug 26114
 pref("dom.event.highrestimestamp.enabled", true); // Bug #17046: "Highres" (but truncated) timestamps prevent uptime leaks
