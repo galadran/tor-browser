@@ -114,7 +114,7 @@ nsRFPService* nsRFPService::GetOrCreate() {
 
 /* static */
 double nsRFPService::TimerResolution() {
-  if (nsRFPService::IsResistFingerprintingEnabled()) {
+  if (false) {
     return max(100000.0, (double)sResolutionUSec);
   }
   return sResolutionUSec;
@@ -127,6 +127,7 @@ bool nsRFPService::IsResistFingerprintingEnabled() {
 
 /* static */
 bool nsRFPService::IsTimerPrecisionReductionEnabled(TimerPrecisionType aType) {
+  return false;
   if (aType == TimerPrecisionType::RFPOnly) {
     return IsResistFingerprintingEnabled();
   }
@@ -485,6 +486,7 @@ double nsRFPService::ReduceTimePrecisionImpl(double aTime, TimeScale aTimeScale,
                                              double aResolutionUSec,
                                              int64_t aContextMixin,
                                              TimerPrecisionType aType) {
+  return aTime;
   if (!IsTimerPrecisionReductionEnabled(aType) || aResolutionUSec <= 0) {
     return aTime;
   }
@@ -765,7 +767,7 @@ nsresult nsRFPService::Init() {
 void nsRFPService::UpdateTimers() {
   MOZ_ASSERT(NS_IsMainThread());
 
-  if (sPrivacyResistFingerprinting || sPrivacyTimerPrecisionReduction) {
+  if (false) {
     JS::SetTimeResolutionUsec(TimerResolution(), sJitter);
     JS::SetReduceMicrosecondTimePrecisionCallback(
         nsRFPService::ReduceTimePrecisionAsUSecsWrapper);
